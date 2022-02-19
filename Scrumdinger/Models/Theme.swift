@@ -5,10 +5,10 @@
 //  Created by Ahmed Hajıyev on 17.02.22.
 //
 
-import Foundation
+
 import SwiftUI
 
-enum Theme : String {
+enum Theme: String {
     case bubblegum
     case buttercup
     case indigo
@@ -26,16 +26,17 @@ enum Theme : String {
     case teal
     case yellow
     
-
-
-    var accentColor : Color {
+    var accentColor: Color {
         switch self {
         case .bubblegum, .buttercup, .lavender, .orange, .periwinkle, .poppy, .seafoam, .sky, .tan, .teal, .yellow: return .black
         case .indigo, .magenta, .navy, .oxblood, .purple: return .white
         }
     }
-    
-    var mainColor : Color {
+    var mainColor: Color {
         Color(rawValue)
+    }
+    
+    var name: String{
+        rawValue.capitalized
     }
 }
