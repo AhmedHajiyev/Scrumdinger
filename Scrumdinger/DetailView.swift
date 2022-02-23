@@ -12,14 +12,14 @@ struct DetailView: View {
     
     @State private var data = DailyScrum.Data()
     @State private var isPresentingEditView = false
-
+    
     var body: some View {
         List {
             Section(header: Text("Meeting Info")) {
                 NavigationLink(destination: MeetingView()) {
-                Label("Start Meeting", systemImage: "timer")
-                    .font(.headline)
-                    .foregroundColor(.accentColor)
+                    Label("Start Meeting", systemImage: "timer")
+                        .font(.headline)
+                        .foregroundColor(.accentColor)
                 }
                 HStack {
                     Label("Length", systemImage: "clock")
@@ -45,17 +45,17 @@ struct DetailView: View {
             }
         }
         .navigationTitle(scrum.title)
-        .toolbar{
+        .toolbar {
             Button("Edit") {
                 isPresentingEditView = true
                 data = scrum.data
             }
         }
-        .sheet(isPresented: $isPresentingEditView ) {
+        .sheet(isPresented: $isPresentingEditView) {
             NavigationView {
                 DetailEditView(data: $data)
                     .navigationTitle(scrum.title)
-                    .toolbar{
+                    .toolbar {
                         ToolbarItem(placement: .cancellationAction) {
                             Button("Cancel") {
                                 isPresentingEditView = false
@@ -64,16 +64,14 @@ struct DetailView: View {
                         ToolbarItem(placement: .confirmationAction) {
                             Button("Done") {
                                 isPresentingEditView = false
-                                scrum.update(from: data)
+                                //scrum.update(from: data)
                             }
                         }
                     }
             }
-            
         }
     }
 }
-
 
 struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
@@ -82,3 +80,4 @@ struct DetailView_Previews: PreviewProvider {
         }
     }
 }
+
